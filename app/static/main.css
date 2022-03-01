@@ -1,0 +1,8 @@
+.ny{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 400px !important;
+}

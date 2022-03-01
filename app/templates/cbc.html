@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="{{url_for('static', filename='css/main.css')}}">
+    <title>CBC News</title>
+</head>
+<body style="color: rgb(6, 6, 100);"> 
+    <div class="container-fluid">
+        {% block body %} 
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              
+              <a class="navbar-brand" href="/">Home</a>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  
+                  <li class="nav-item">
+                    <a class="nav-link active" href="cbc">CBC News</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="bbc" tabindex="-1" aria-disabled="true">BBC News</a>
+                  </li>
+                </ul>
+               
+              </div>
+            </div>
+          </nav>
+        
+          <div class="container ny" style="display: flex; flex-wrap: wrap;">
+        {% for new, des, i, url in context%}
+        <div class="d-block card mt-5 ml-5" style="width: 400px;">
+        <img class="card-img-top" src="{{i}}" alt="">
+        <div class="card-body">
+        <h2 class="card-title">News :</h2> {{new}}
+        <h3 class="card-text">Description :</h3> {{des}}
+<br>
+        <a href="{{url}}"><button>Read More...</button></a>
+        </div>
+        </div>
+        {% endfor%}
+
+        </div>
+        
+        {% endblock %}
+        
+        </div>
+</body>
+</html>
