@@ -1,13 +1,13 @@
 from flask import render_template
-from app import app
 from newsapi import NewsApiClient
+from . import main
 
 
 
 
-@app.route('/')
+@main.route('/')
 def index():
-    newsapi = NewsApiClient(api_key="c7414509761344ce8321cc7ae296ade4")
+    newsapi = NewsApiClient(api_key="8d21ef3a971c46e88b1d74d2055ca276")
     topheadlines = newsapi.get_top_headlines(sources="fox-news")
 
     articles = topheadlines['articles']
@@ -35,9 +35,9 @@ def index():
     return render_template('index.html', context= mylist)
 
 
-@app.route('/bbc')
+@main.route('/bbc')
 def bbc():
-    newsapi = NewsApiClient(api_key="c7414509761344ce8321cc7ae296ade4")
+    newsapi = NewsApiClient(api_key="8d21ef3a971c46e88b1d74d2055ca276")
     topheadlines = newsapi.get_top_headlines(sources="bbc-news")
  
     articles = topheadlines['articles']
@@ -59,9 +59,9 @@ def bbc():
  
     return render_template('bbc.html', context=mylist)
 
-@app.route('/cbc')
+@main.route('/cbc')
 def cbc():
-    newsapi = NewsApiClient(api_key="c7414509761344ce8321cc7ae296ade4")
+    newsapi = NewsApiClient(api_key="8d21ef3a971c46e88b1d74d2055ca276")
     topheadlines = newsapi.get_top_headlines(sources="cbc-news")
  
     articles = topheadlines['articles']

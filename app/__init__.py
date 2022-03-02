@@ -1,7 +1,17 @@
-from flask import Flask, render_template
+# from ensurepip import bootstrap
+from flask import Flask
+from flask_bootstrap import Bootstrap
+from .config import config_options
+bootstrap=Bootstrap()
+def create_app(config_name):
+    app=Flask(__name__)
+    app.config.from_object(config_options[config_name])
+    bootstrap.init_app(app)
+    #....
+    # Registering the blueprint
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
-
-app = Flask(__name__)
-
-from app import views
-from app import error
+    # setting config
+    
+    return app
