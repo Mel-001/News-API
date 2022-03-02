@@ -1,5 +1,5 @@
 from flask import render_template
-from .views import NewsApiClient
+from newsapi import NewsApiClient
 from . import main
 
 
